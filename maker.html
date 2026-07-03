@@ -11,9 +11,10 @@
 <body>
   <header class="nav">
     <a class="brand" href="/">◆ Tools</a>
-    <nav>
+    <nav aria-label="Primary">
       <a href="index.html">All tools</a>
-      <a href="#download">Download</a>
+      <a href="#download">Get it</a>
+      <a href="maker-pro.html">Pro</a>
       <a href="https://github.com/bpupadhyaya/maker" target="_blank" rel="noopener">Source</a>
     </nav>
   </header>
@@ -26,7 +27,7 @@
       <p class="lede">Describe what you want — Maker builds a real, running tool for it, entirely on
         your machine. The AI-age successor to <code>make</code>.</p>
       <div class="cta">
-        <a class="btn primary" href="#download">Download</a>
+        <a class="btn primary" href="#download">Get Maker free</a>
         <a class="btn ghost" href="https://github.com/bpupadhyaya/maker" target="_blank" rel="noopener">View source</a>
       </div>
     </section>
@@ -39,44 +40,54 @@
         <div class="value"><h4>👁️ Reads images</h4><p>Paste a screenshot and Maker sees it — routed to a local vision model automatically.</p></div>
         <div class="value"><h4>🔒 Asks before touching files</h4><p>Permission-gated read/write to your folders — nothing happens without your OK.</p></div>
         <div class="value"><h4>🧠 Your model, your rules</h4><p>Runs open-source models locally (llama.cpp / MLX). Optionally connect a cloud key for the hard 20%.</p></div>
-        <div class="value"><h4>💻 GUI and terminal</h4><p>A full browser workshop or a fast terminal — same engine, your choice.</p></div>
+        <div class="value"><h4>💻 GUI, terminal — even your phone</h4><p>A full browser workshop or a fast terminal, same engine. <code>maker serve --lan</code> opens it from your phone on the same Wi-Fi.</p></div>
       </div>
     </section>
 
     <section id="download" class="section download">
-      <h2>Download</h2>
-      <p class="muted center">Pick your platform. First run downloads a local model — the one time it needs internet.</p>
+      <h2>Get Maker</h2>
+      <p class="muted center">Two commands from a fresh checkout to a running workshop. Needs
+        <a href="https://nodejs.org" target="_blank" rel="noopener">Node ≥ 23.6</a> and git.</p>
+      <pre class="code-block"><code>git clone https://github.com/bpupadhyaya/maker &amp;&amp; cd maker
+node packages/gui/serve.ts</code></pre>
+      <p class="muted center">That opens the workshop at <code>127.0.0.1:4319</code>. Click
+        <strong>⛁ Models → Download</strong> to fetch a local model (~1 GB to start) — the one
+        time it needs internet. Want a <code>maker</code> command and an app icon? Run
+        <code>bash scripts/install.sh</code> (or <code>install.ps1</code> on Windows).</p>
       <div class="grid three">
-        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases/latest" target="_blank" rel="noopener">
-          <span class="os"></span><h4>macOS</h4><p>Apple Silicon &amp; Intel</p><span class="card-link">Get .dmg →</span>
+        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">
+          <span class="os"></span><h4>macOS</h4><p>Apple Silicon (MLX) &amp; Intel</p><span class="card-link">.dmg — coming →</span>
         </a>
-        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases/latest" target="_blank" rel="noopener">
-          <span class="os"></span><h4>Windows</h4><p>10 &amp; 11 (x64)</p><span class="card-link">Get installer →</span>
+        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">
+          <span class="os"></span><h4>Windows</h4><p>10 &amp; 11 (x64)</p><span class="card-link">Installer — coming →</span>
         </a>
-        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases/latest" target="_blank" rel="noopener">
-          <span class="os"></span><h4>Linux</h4><p>AppImage &amp; .deb</p><span class="card-link">Get build →</span>
+        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">
+          <span class="os"></span><h4>Linux</h4><p>AppImage &amp; .deb</p><span class="card-link">Build — coming →</span>
         </a>
       </div>
-      <p class="note center">Early releases are unsigned — your OS may show a one-time "unidentified
-        developer" prompt (right-click → Open on macOS; "More info → Run anyway" on Windows). Prefer
-        the source? <a href="https://github.com/bpupadhyaya/maker#install" target="_blank" rel="noopener">Clone &amp; run</a>.</p>
+      <p class="note center">Native installers publish to GitHub Releases (the pipeline is wired;
+        first builds will be unsigned — a one-time "unidentified developer" prompt you click
+        through). Until then, the two commands above are the way in.</p>
     </section>
 
     <section class="section pro">
-      <div class="pro-card">
-        <span class="badge pro">Coming soon</span>
+      <a class="pro-card" href="maker-pro.html">
+        <span class="badge pro">Coming soon · $11.99/mo</span>
         <h3>Maker Pro</h3>
-        <p>Everything in the free version, plus <strong>Maker Cloud</strong> (frontier models on tap,
-          no API key), <strong>Sync</strong> across devices, and <strong>Teams</strong> — as an
-          optional subscription. The free, offline Maker stays free forever.</p>
-      </div>
+        <p>Everything in free Maker, plus a model that <strong>learns you</strong> (on-device
+          fine-tuning), a <strong>local model orchestra</strong>, a <strong>private knowledge
+          base</strong> of your own data, day-zero new-model support, and <strong>Publish</strong>
+          &amp; <strong>Sync</strong> — as an optional subscription. The free, offline Maker stays
+          free forever.</p>
+        <span class="card-link pro-link">Explore Maker Pro →</span>
+      </a>
     </section>
   </main>
 
   <footer>
     <div class="foot-inner">
       <span>© 2026 Bhim Upadhyaya</span>
-      <nav>
+      <nav aria-label="Footer">
         <a href="index.html">All tools</a>
         <a href="https://github.com/bpupadhyaya/maker" target="_blank" rel="noopener">Source</a>
         <a href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">Releases</a>

@@ -112,9 +112,39 @@ h1 { font-size: clamp(38px, 7vw, 68px); line-height: 1.04; letter-spacing: -1.5p
 .note a { color: var(--accent); }
 
 /* pro */
-.pro-card { text-align: center; padding: 40px 28px; border-radius: 18px; border: 1px solid rgba(167,139,250,0.3); background: linear-gradient(180deg, rgba(167,139,250,0.08), var(--panel-2)); }
+.pro-card { display: block; text-align: center; padding: 40px 28px; border-radius: 18px; border: 1px solid rgba(167,139,250,0.3); background: linear-gradient(180deg, rgba(167,139,250,0.08), var(--panel-2)); transition: transform .14s, border-color .14s; }
+a.pro-card:hover { transform: translateY(-3px); border-color: rgba(167,139,250,0.6); }
 .pro-card h3 { font-size: 26px; margin: 12px 0 10px; }
-.pro-card p { color: var(--muted); max-width: 620px; margin: 0 auto; }
+.pro-card p { color: var(--muted); max-width: 620px; margin: 0 auto 16px; }
+.pro-logo { background: linear-gradient(135deg, var(--accent-2), #f0abfc); }
+.pro-grad { background: linear-gradient(100deg, var(--accent-2), #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pro-btn { background: linear-gradient(100deg, var(--accent-2), #f0abfc); box-shadow: 0 8px 30px rgba(167,139,250,0.28); }
+.pro-btn:hover { box-shadow: 0 12px 36px rgba(167,139,250,0.38); }
+.pro-link { color: var(--accent-2); }
+.card.pro-card-mini:hover { border-color: rgba(167,139,250,0.55); }
+.badge.soon-badge { color: var(--ink); }
+.card.wide { grid-column: 1 / -1; }
+
+/* feature group subheads */
+.subhead { margin: 34px 0 14px; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent-2); font-weight: 700; }
+
+/* code block */
+.code-block { max-width: 640px; margin: 18px auto 14px; padding: 18px 22px; border-radius: 14px; border: 1px solid var(--line); background: #0a0a0d; overflow-x: auto; text-align: left; }
+.code-block code { display: block; background: none; border: 0; padding: 0; font-size: 14px; line-height: 1.7; color: var(--green); white-space: pre; }
+
+/* pricing */
+.plans { align-items: stretch; }
+.plan { display: flex; flex-direction: column; padding: 30px 26px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), var(--panel-2)); }
+.plan.hot { border-color: rgba(167,139,250,0.5); background: linear-gradient(180deg, rgba(167,139,250,0.10), var(--panel-2)); box-shadow: 0 16px 50px rgba(167,139,250,0.12); }
+.plan .badge { align-self: flex-start; margin-bottom: 10px; }
+.plan h3 { margin: 0 0 6px; font-size: 22px; }
+.plan .price { font-size: 34px; font-weight: 800; letter-spacing: -1px; margin: 0 0 16px; }
+.plan .price span { font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.plan ul { list-style: none; margin: 0 0 22px; padding: 0; color: var(--muted); font-size: 15px; flex: 1; }
+.plan ul li { padding: 6px 0 6px 26px; position: relative; }
+.plan ul li::before { content: "✓"; position: absolute; left: 2px; color: var(--green); font-weight: 700; }
+.plan.hot ul li::before { color: var(--accent-2); }
+.btn.full { display: block; text-align: center; }
 
 /* footer */
 footer { border-top: 1px solid var(--line); margin-top: 40px; }
