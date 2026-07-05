@@ -126,6 +126,46 @@
       <p class="note center">Team and Pro+ tiers are planned. Annual billing available at launch.</p>
     </section>
 
+    <section id="download" class="section">
+      <h2>Download Maker Pro</h2>
+      <p class="muted center">One download, no dependencies — unzip and run. <strong>Without a
+        license key it's the complete free Maker</strong>; your subscription key unlocks Pro.</p>
+      <div class="grid three">
+        <a class="dl" id="pdl-mac" href="https://github.com/bpupadhyaya/maker-pro-releases/releases/latest" target="_blank" rel="noopener">
+          <span class="os">🍎</span><h4>macOS</h4><p>Apple Silicon &amp; Intel</p><span class="card-link">Download →</span>
+        </a>
+        <a class="dl" id="pdl-win" href="https://github.com/bpupadhyaya/maker-pro-releases/releases/latest" target="_blank" rel="noopener">
+          <span class="os">🪟</span><h4>Windows</h4><p>10 &amp; 11 (x64)</p><span class="card-link">Download →</span>
+        </a>
+        <a class="dl" id="pdl-linux" href="https://github.com/bpupadhyaya/maker-pro-releases/releases/latest" target="_blank" rel="noopener">
+          <span class="os">🐧</span><h4>Linux</h4><p>x64</p><span class="card-link">Download →</span>
+        </a>
+      </div>
+      <p class="note center">Early builds are unsigned — a one-time "unidentified developer"
+        prompt (macOS: right-click → Open). All builds publish to
+        <a href="https://github.com/bpupadhyaya/maker-pro-releases/releases" target="_blank" rel="noopener">GitHub Releases</a>.</p>
+      <script>
+        fetch("https://api.github.com/repos/bpupadhyaya/maker-pro-releases/releases/latest")
+          .then((r) => (r.ok ? r.json() : null))
+          .then((rel) => {
+            if (!rel || !Array.isArray(rel.assets)) return;
+            const wire = (id, re) => {
+              const a = rel.assets.find((x) => re.test(x.name));
+              const el = document.getElementById(id);
+              if (el && a) {
+                el.href = a.browser_download_url;
+                el.querySelector(".card-link").textContent = "Download · " + (rel.tag_name || "") + " →";
+              }
+            };
+            const mac = /apple|arm/i.test(navigator.userAgent) || /Mac/.test(navigator.platform);
+            wire("pdl-mac", mac ? /macos-arm64\.zip$/ : /macos-x64\.zip$/);
+            wire("pdl-win", /windows-x64\.zip$/);
+            wire("pdl-linux", /linux-x64\.zip$/);
+          })
+          .catch(() => {});
+      </script>
+    </section>
+
     <section class="section">
       <h2>How activation works</h2>
       <div class="grid three">
