@@ -145,6 +145,17 @@
         open the .dmg, drag Maker Pro to Applications, launch. Windows: SmartScreen → More info → Run anyway (signing cert coming).
         Full install + activation guide in the
         <a href="https://github.com/bpupadhyaya/maker-pro-releases#readme" target="_blank" rel="noopener">README</a>.</p>
+      <div class="value" style="max-width:720px;margin:1.5rem auto 0;text-align:left">
+        <h4>🛡️ Checked for malware by Apple</h4>
+        <p>The macOS app is <strong>notarized</strong> — Apple ran the same automated malware scan
+          the App Store uses on the exact file you download, and verified the publisher as
+          <strong>EqualInformation,&nbsp;LLC</strong>. That's why it opens with no security warning.
+          Every release also publishes <strong>SHA-256 checksums</strong> so you can confirm your
+          download is untampered, and the local engine is the
+          <a href="https://github.com/bpupadhyaya/maker" target="_blank" rel="noopener">open-source
+          MIT Maker</a> — auditable by anyone.
+          <a href="https://github.com/bpupadhyaya/maker-pro-releases#is-it-safe-yes--heres-how-to-verify" target="_blank" rel="noopener">How to verify →</a></p>
+      </div>
       <script>
         fetch("https://api.github.com/repos/bpupadhyaya/maker-pro-releases/releases/latest")
           .then((r) => (r.ok ? r.json() : null))
