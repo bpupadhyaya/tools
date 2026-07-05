@@ -10,6 +10,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=3">
+  <style>
+    .license-modal { width: min(860px, calc(100vw - 2rem)); height: min(80vh, 900px);
+      padding: 0; border: 1px solid rgba(124,58,237,.35); border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(20,20,43,.35); }
+    .license-modal::backdrop { background: rgba(20,20,43,.55); backdrop-filter: blur(3px); }
+    .license-modal .lm-bar { display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .8rem 1.1rem; border-bottom: 1px solid rgba(20,20,43,.1);
+      font-family: inherit; }
+    .license-modal .lm-actions { display: flex; align-items: center; gap: .9rem; }
+    .license-modal .lm-open { font-size: .9rem; color: #4f46e5; text-decoration: none; }
+    .license-modal .lm-open:hover { text-decoration: underline; }
+    .license-modal .lm-close { border: 0; background: none; font-size: 1.15rem; line-height: 1;
+      cursor: pointer; color: #7c7c8a; padding: .25rem .4rem; border-radius: 8px; }
+    .license-modal .lm-close:hover { background: rgba(20,20,43,.07); color: #14142b; }
+    .license-modal iframe { display: block; width: 100%; height: calc(100% - 3.1rem); border: 0; }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -214,6 +230,34 @@
       </div>
     </section>
   </main>
+
+  <dialog id="license-modal" class="license-modal" aria-label="License Agreement and Terms">
+    <div class="lm-bar">
+      <strong>License Agreement &amp; Terms</strong>
+      <div class="lm-actions">
+        <a class="lm-open" href="license.html" target="_blank" rel="noopener">Open full page ↗</a>
+        <button class="lm-close" type="button" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <iframe title="License Agreement &amp; Terms" data-src="license.html?embed=1"></iframe>
+  </dialog>
+
+  <script>
+    // License links open in an in-page modal; href stays as a no-JS fallback.
+    const licenseModal = document.getElementById("license-modal");
+    const licenseFrame = licenseModal.querySelector("iframe");
+    document.querySelectorAll('a[href^="license.html"]:not(.lm-open)').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!licenseFrame.src) licenseFrame.src = licenseFrame.dataset.src;
+        licenseModal.showModal();
+      });
+    });
+    licenseModal.querySelector(".lm-close").addEventListener("click", () => licenseModal.close());
+    licenseModal.addEventListener("click", (e) => {
+      if (e.target === licenseModal) licenseModal.close();
+    });
+  </script>
 
   <script>
     // Flip the page live: set STRIPE_LINK to the recurring Payment Link

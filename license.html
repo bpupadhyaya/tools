@@ -21,7 +21,16 @@
       border-radius: 12px; padding: 1rem 1.2rem; margin: 1.4rem 0; }
     .legal .meta { color: #7c7c8a; font-size: .92rem; }
     .legal strong.caps { text-transform: uppercase; letter-spacing: .02em; }
+    html.embedded .nav, html.embedded footer { display: none; }
+    html.embedded .section { padding-top: 1.2rem; padding-bottom: 1.2rem; }
+    html.embedded .legal h1 { font-size: 1.5rem; }
   </style>
+  <script>
+    // Embed mode: hide site chrome when shown inside the license modal iframe.
+    if (location.search.includes("embed=1") || window.self !== window.top) {
+      document.documentElement.classList.add("embedded");
+    }
+  </script>
 </head>
 <body>
   <header class="nav">
