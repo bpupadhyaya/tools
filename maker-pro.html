@@ -13,7 +13,7 @@
 </head>
 <body>
   <header class="nav">
-    <a class="brand" href="/">◆ Tools</a>
+    <a class="brand" href="/tools/">◆ Tools</a>
     <nav aria-label="Primary">
       <a href="index.html">All tools</a>
       <a href="maker.html">Maker (free)</a>
@@ -141,9 +141,10 @@
           <span class="os">🐧</span><h4>Linux</h4><p>x64</p><span class="card-link">Download →</span>
         </a>
       </div>
-      <p class="note center">Early builds are unsigned — a one-time "unidentified developer"
-        prompt (macOS: right-click → Open). All builds publish to
-        <a href="https://github.com/bpupadhyaya/maker-pro-releases/releases" target="_blank" rel="noopener">GitHub Releases</a>.</p>
+      <p class="note center">Early builds aren't notarized yet — macOS may say "damaged"; fix it
+        once with <code>xattr -dr com.apple.quarantine &lt;unzipped-folder&gt;</code>, Windows:
+        SmartScreen → More info → Run anyway. Full install + activation guide in the
+        <a href="https://github.com/bpupadhyaya/maker-pro-releases#readme" target="_blank" rel="noopener">README</a>.</p>
       <script>
         fetch("https://api.github.com/repos/bpupadhyaya/maker-pro-releases/releases/latest")
           .then((r) => (r.ok ? r.json() : null))
