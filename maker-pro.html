@@ -157,13 +157,13 @@
     // Flip the page live: set STRIPE_LINK to the recurring Payment Link
     // (buy.stripe.com/…) and every waitlist CTA becomes Subscribe, the
     // "Coming soon" badges disappear. One-line launch.
-    const STRIPE_LINK = "";
+    const STRIPE_LINK = "https://buy.stripe.com/eVq00j6nQ14GaKUaHX6AM01";
     if (STRIPE_LINK) {
       document.querySelectorAll('a[href^="mailto"]').forEach((a) => {
         a.href = STRIPE_LINK;
         a.target = "_blank";
         a.rel = "noopener";
-        a.textContent = a.classList.contains("full") ? "Subscribe — $11.99/mo" : "Get Maker Pro";
+        a.textContent = a.classList.contains("full") ? "Start 14-day free trial — then $11.99/mo" : "Get Maker Pro";
       });
       document.querySelectorAll(".soon-badge, .plan .badge.pro").forEach((b) => {
         if (/coming soon/i.test(b.textContent)) b.remove();
