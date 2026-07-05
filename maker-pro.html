@@ -132,7 +132,7 @@
         license key it's the complete free Maker</strong>; your subscription key unlocks Pro.</p>
       <div class="grid three">
         <a class="dl" id="pdl-mac" href="https://github.com/bpupadhyaya/maker-pro-releases/releases/latest" target="_blank" rel="noopener">
-          <span class="os">🍎</span><h4>macOS</h4><p>Apple Silicon &amp; Intel</p><span class="card-link">Download →</span>
+          <span class="os">🍎</span><h4>macOS</h4><p>Apple Silicon</p><span class="card-link">Download .dmg →</span>
         </a>
         <a class="dl" id="pdl-win" href="https://github.com/bpupadhyaya/maker-pro-releases/releases/latest" target="_blank" rel="noopener">
           <span class="os">🪟</span><h4>Windows</h4><p>10 &amp; 11 (x64)</p><span class="card-link">Download →</span>
@@ -141,8 +141,8 @@
           <span class="os">🐧</span><h4>Linux</h4><p>x64</p><span class="card-link">Download →</span>
         </a>
       </div>
-      <p class="note center">macOS builds are <strong>signed &amp; notarized by Apple</strong> —
-        download, unzip, open. Windows: SmartScreen → More info → Run anyway (signing cert coming).
+      <p class="note center">macOS is a <strong>native app, signed &amp; notarized by Apple</strong> —
+        open the .dmg, drag Maker Pro to Applications, launch. Windows: SmartScreen → More info → Run anyway (signing cert coming).
         Full install + activation guide in the
         <a href="https://github.com/bpupadhyaya/maker-pro-releases#readme" target="_blank" rel="noopener">README</a>.</p>
       <script>
@@ -159,7 +159,7 @@
               }
             };
             const mac = /apple|arm/i.test(navigator.userAgent) || /Mac/.test(navigator.platform);
-            wire("pdl-mac", mac ? /macos-arm64\.zip$/ : /macos-x64\.zip$/);
+            wire("pdl-mac", mac ? /macos-arm64\.dmg$/i : /macos-x64\.dmg$/i);
             wire("pdl-win", /windows-x64\.zip$/);
             wire("pdl-linux", /linux-x64\.zip$/);
           })
