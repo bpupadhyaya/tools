@@ -58,19 +58,41 @@ node packages/gui/serve.ts</code></pre>
         time it needs internet. Want a <code>maker</code> command and an app icon? Run
         <code>bash scripts/install.sh</code> (or <code>install.ps1</code> on Windows).</p>
       <div class="grid three">
-        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">
-          <span class="os">🍎</span><h4>macOS</h4><p>Apple Silicon (MLX) &amp; Intel</p><span class="card-link">.dmg — coming →</span>
+        <a class="dl" id="dl-mac" href="https://github.com/bpupadhyaya/maker/releases/latest" target="_blank" rel="noopener">
+          <span class="os">🍎</span><h4>macOS</h4><p>Apple Silicon</p><span class="card-link">Download .dmg →</span>
         </a>
-        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">
-          <span class="os">🪟</span><h4>Windows</h4><p>10 &amp; 11 (x64)</p><span class="card-link">Installer — coming →</span>
+        <a class="dl" id="dl-win" href="https://github.com/bpupadhyaya/maker/releases/latest" target="_blank" rel="noopener">
+          <span class="os">🪟</span><h4>Windows</h4><p>10 &amp; 11 (x64)</p><span class="card-link">Download installer →</span>
         </a>
-        <a class="dl" href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">
-          <span class="os">🐧</span><h4>Linux</h4><p>AppImage &amp; .deb</p><span class="card-link">Build — coming →</span>
+        <a class="dl" id="dl-linux" href="https://github.com/bpupadhyaya/maker/releases/latest" target="_blank" rel="noopener">
+          <span class="os">🐧</span><h4>Linux</h4><p>.deb &amp; .rpm</p><span class="card-link">Download .deb →</span>
         </a>
       </div>
-      <p class="note center">Native installers publish to GitHub Releases (the pipeline is wired;
-        first builds will be unsigned — a one-time "unidentified developer" prompt you click
-        through). Until then, the two commands above are the way in.</p>
+      <p class="note center">Early builds are unsigned — expect a one-time "unidentified
+        developer" prompt (macOS: right-click → Open). Prefer source? The two commands above
+        work everywhere. All builds publish to
+        <a href="https://github.com/bpupadhyaya/maker/releases" target="_blank" rel="noopener">GitHub Releases</a>.</p>
+      <script>
+        // Resolve the latest release's direct asset links (cards fall back to the
+        // releases page if the API is unreachable or names change).
+        fetch("https://api.github.com/repos/bpupadhyaya/maker/releases/latest")
+          .then((r) => (r.ok ? r.json() : null))
+          .then((rel) => {
+            if (!rel || !Array.isArray(rel.assets)) return;
+            const pick = (re) => rel.assets.find((a) => re.test(a.name));
+            const wire = (id, asset, label) => {
+              const el = document.getElementById(id);
+              if (el && asset) {
+                el.href = asset.browser_download_url;
+                el.querySelector(".card-link").textContent = label + " · " + (rel.tag_name || "") + " →";
+              }
+            };
+            wire("dl-mac", pick(/aarch64\.dmg$/), "Download .dmg");
+            wire("dl-win", pick(/setup\.exe$/) || pick(/\.msi$/), "Download installer");
+            wire("dl-linux", pick(/\.deb$/), "Download .deb");
+          })
+          .catch(() => {});
+      </script>
     </section>
 
     <section class="section pro">

@@ -127,6 +127,18 @@
     </section>
 
     <section class="section">
+      <h2>How activation works</h2>
+      <div class="grid three">
+        <div class="value"><h4>1 · Subscribe</h4><p>Checkout takes a minute (Stripe). You'll get a
+          receipt and, shortly after, your license key by email.</p></div>
+        <div class="value"><h4>2 · Enter your key</h4><p>Open Maker Pro, click the <strong>PRO</strong>
+          badge, paste the key, hit Activate. Done — Pro stays active offline between renewals.</p></div>
+        <div class="value"><h4>3 · Cancel anytime</h4><p>From the customer-portal link on your
+          receipt. Your built tools are yours forever; the app simply returns to free Maker.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
       <h2>The honest part</h2>
       <div class="grid">
         <div class="value"><h4>✅ Offline stays sacred</h4>
@@ -140,6 +152,24 @@
       </div>
     </section>
   </main>
+
+  <script>
+    // Flip the page live: set STRIPE_LINK to the recurring Payment Link
+    // (buy.stripe.com/…) and every waitlist CTA becomes Subscribe, the
+    // "Coming soon" badges disappear. One-line launch.
+    const STRIPE_LINK = "";
+    if (STRIPE_LINK) {
+      document.querySelectorAll('a[href^="mailto"]').forEach((a) => {
+        a.href = STRIPE_LINK;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = a.classList.contains("full") ? "Subscribe — $11.99/mo" : "Get Maker Pro";
+      });
+      document.querySelectorAll(".soon-badge, .plan .badge.pro").forEach((b) => {
+        if (/coming soon/i.test(b.textContent)) b.remove();
+      });
+    }
+  </script>
 
   <footer>
     <div class="foot-inner">
