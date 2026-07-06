@@ -265,7 +265,7 @@
     // "Coming soon" badges disappear. One-line launch.
     const STRIPE_LINK = "https://buy.stripe.com/eVq00j6nQ14GaKUaHX6AM01";
     if (STRIPE_LINK) {
-      document.querySelectorAll('a[href^="mailto"]').forEach((a) => {
+      document.querySelectorAll('main a[href^="mailto"]').forEach((a) => {
         a.href = STRIPE_LINK;
         a.target = "_blank";
         a.rel = "noopener";
@@ -287,6 +287,7 @@
         <a href="license.html">License &amp; Terms</a>
         <a href="https://github.com/bpupadhyaya/maker" target="_blank" rel="noopener">Open source</a>
       </nav>
+      <div class="foot-contact">Support: <a href="mailto:support@equalinformation.com">support@equalinformation.com</a> · Sales: <a href="mailto:info@equalinformation.com">info@equalinformation.com</a></div>
     </div>
   </footer>
 </body>

@@ -239,3 +239,7 @@ footer { background: var(--indigo-900); margin-top: 56px; }
 .foot-inner nav { display: flex; gap: 22px; }
 .foot-inner a { color: rgba(255,255,255,0.85); font-weight: 500; }
 .foot-inner a:hover { color: #fff; }
+.foot-contact {
+  flex-basis: 100%; text-align: center;
+  color: rgba(255,255,255,0.6); font-size: 13.5px;
+}
